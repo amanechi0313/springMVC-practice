@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>測試請求參數</title>
+</head>
+<body>
+    <h1>測試請求參數</h1>
+    <a th:href="@{/testServletAPI(username='admin',password=12345)}">測試使用servletAPI獲得請求參數</a><br>
+    <a th:href="@{/testParam(username='admin',password=12345)}">使用控制器獲得參數</a><br>
+
+    <form th:action="@{/testParam}" method="post">
+        username: <input type="text" name="user_name"><br>
+        password: <input type="password" name="password"><br>
+        hobbies: <input type="checkbox" name="hobby" value="a">a
+        <input type="checkbox" name="hobby" value="b">b
+        <input type="checkbox" name="hobby" value="c">c<br>
+        <input type="submit" value="使用控制器獲得參數">
+    </form>
+
+    <form th:action="@{/testBean}" method="post">
+        username: <input type="text" name="username"><br>
+        password: <input type="password" name="password"><br>
+        gender: <input type="radio" name="gender" value="male">male<input type="radio" name="gender" value="female">female<br>
+        age: <input type="text" name="age"><br>
+        email: <input type="text" name="email"><br>
+        <input type="submit" value="使用POJO獲得參數">
+    </form>
+
+</body>
+</html>

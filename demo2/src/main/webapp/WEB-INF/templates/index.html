@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>首頁</h1>
+<a th:href="@{/hello/testRequestMapping}">測試annotation位址</a></br>
+<a th:href="@{/testRequestMapping}">測試value:/testRequestMapping</a></br>
+<a th:href="@{/test}">測試value:/test</a></br>
+<a th:href="@{/test}">以GET測試method屬性</a></br>
+<form th:action="@{/test}" method="post">
+    <input type="submit"  value="以POST測試method屬性">
+</form>
+<a th:href="@{/testGetMapping}">測試testGetMapping</a></br>
+<form th:action="@{/testPut}" method="put">
+<!--    html form中的method只能是get或post，如果不是以上這兩種，則一律照get算-->
+<!--    因為/testPut要求put方法，所以此處回傳405-->
+    <input type="submit"  value="測試form表單是否能發送put或delete請求方式">
+</form>
+<!--一般寫法，會報錯但不影響build-->
+<!--<a th:href="@{/testParamsAndHeaders?username=admin}">測試RequestMapping註解的params屬性</a></br>-->
+
+<!--thymeleaf語法攜帶參數-->
+<a th:href="@{/testParamsAndHeaders(username='admin',password=123456)}">測試RequestMapping註解的params屬性</a></br>
+<a th:href="@{/a1a/testAnt}">測試@RequestionMappin與ant風格的路徑"?"</a></br>
+<a th:href="@{/atestinga/testAnt}">測試@RequestionMappin與ant風格的路徑"*"</a></br>
+<a th:href="@{/a/a/testAnt}">測試@RequestionMappin與ant風格的路徑"**"</a></br>
+<a th:href="@{/testPath/1/test}">路徑中的佔位符{請求參數}</a></br>
+
+
+
+</body>
+</html>
